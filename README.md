@@ -4,7 +4,7 @@ Rest API for product comparison
 
 Apache Maven 3.6.2 Java version: 1.8.0_181
 
-Steps to setup project
+### Steps to setup project
 
 git clone https://github.com/Gyan0522/dealer-listing.git
 
@@ -21,14 +21,14 @@ Build Docker image:
 Run Docker Container:
 -docker run -p 80:8080 product-comparison
 
-API Endpoint :
+#### API Endpoint :
 
 GET
 
 - http://localhost:80/api/v1/product?productName=Rice&category=Grocery
 
 
-API to add data for testing
+#### API to add data for testing
 
 PUT
 

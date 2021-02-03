@@ -1,6 +1,6 @@
-# Dealer Listing
+# Product Compare
 
-Rest API for dealer listing
+Rest API for product comparison
 
 Apache Maven 3.6.2 Java version: 1.8.0_181
 
@@ -8,47 +8,42 @@ Steps to setup project
 
 git clone https://github.com/Gyan0522/dealer-listing.git
 
-cd dealer-listing/
+cd product-compare/
 
 - mvn install
-- mvn package && java -jar target/dealerlistings-0.1.0.jar
-- mvn -N io.takari:maven:wrapper
 - ./mvnw clean spring-boot:run
 
-Note : While setting up the project , ensure that maven is installed steps to export the maven path from cmd line:
-
-Maven path setup
-
-- $ export M2_HOME=/path to maven/apache-maven-3.6.2
-- $ export M2=$M2_HOME/bin
-- $ export MAVEN_OPTS=-Xms256m -Xmx512m
-- $ export PATH=$M2:$PATH
 
 Build Docker image:
--docker build -tag="dealer-listing" .
-
+- mvn clean install
+-	docker build --tag=product-comparison .
+		
 Run Docker Container:
--docker run -p 8080:8080 -it --rm dealer-listing
+-docker run -p 80:8080 product-comparison
 
 API Endpoint :
 
 GET
 
-- http://localhost:8080/v1/vehicle_listings
+- http://localhost:80/api/v1/product?productName=Rice&category=Grocery
 
-- http://localhost:8080/v1/searchlisting?make=maruti&model=magna&year=2018&color=red
+
+API to add data for testing
 
 PUT
 
-- http://localhost:8080/v1/listing
+- http://localhost:80/api/v1/productsEcomm
 
 Body:
-{  
-"dealerId": "101",
-"code": "a",
-"make": "renault",
-"model": "megane",
-"kw": 212,
-"year": 2018,
-"color": "red",
-"price": 25123 }
+
+{"productId": "101", "productName": "Rice", "productPrice": "200", "productDiscountedPrice": "185", "category": "Grocery", "source":"Ecomm" }
+
+PUT
+- http://localhost:80/api/v1/productsRetail
+
+Body:
+
+{"productId": "101", "productName": "Rice", "productPrice": "200", "productDiscountedPrice": "185", "category": "Grocery", "source":"Retail" }
+
+
+
